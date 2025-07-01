@@ -218,7 +218,7 @@
             $('#txt_date').val(currentDate);
             $('#ddl_mark').val(0);
             $('#txt_time').val(currentTime);
-            
+
             togglePDFButton();
         }
 
@@ -354,6 +354,104 @@
             }
         }
         
+        // function downloadPDF() 
+        // {
+        //     const { jsPDF } = window.jspdf;
+        //     const doc = new jsPDF('portrait', 'mm', 'a4');
+            
+        //     // Company Header - CUSTOMIZE THESE DETAILS
+        //     doc.setFontSize(20);
+        //     doc.setFont('helvetica', 'bold');
+        //     doc.text('YOUR COMPANY NAME', 105, 20, { align: 'center' }); // CHANGE THIS
+            
+        //     doc.setFontSize(12);
+        //     doc.setFont('helvetica', 'normal');
+        //     doc.text('Your Company Tagline', 105, 28, { align: 'center' }); // CHANGE THIS
+            
+        //     // Company Details - CUSTOMIZE THESE
+        //     doc.setFontSize(10);
+        //     doc.text('Email: your-email@company.com | Phone: +1-234-567-8900', 105, 35, { align: 'center' }); // CHANGE THIS
+        //     doc.text('Website: www.yourcompany.com', 105, 40, { align: 'center' }); // CHANGE THIS
+            
+        //     // Add a line separator
+        //     doc.setLineWidth(0.5);
+        //     doc.line(20, 45, 190, 45);
+            
+        //     // Report Title
+        //     doc.setFontSize(14);
+        //     doc.setFont('helvetica', 'bold');
+        //     doc.text('PLANNING REPORT', 105, 55, { align: 'center' });
+            
+        //     // Date of generation
+        //     var today = new Date();
+        //     var dateStr = today.toLocaleDateString('en-GB') + ' ' + today.toLocaleTimeString('en-GB', {hour12: false});
+        //     doc.setFontSize(10);
+        //     doc.setFont('helvetica', 'normal');
+        //     doc.text('Generated on: ' + dateStr, 105, 62, { align: 'center' });
+            
+        //     // Get table data
+        //     var table = document.getElementById('add_planner');
+        //     var tableData = [];
+        //     var headers = [];
+            
+        //     // Get headers (excluding Action column)
+        //     var headerRow = table.rows[0];
+        //     for (var j = 0; j < headerRow.cells.length - 1; j++) {
+        //         headers.push(headerRow.cells[j].textContent.trim());
+        //     }
+            
+        //     // Get data rows (excluding Action column)
+        //     for (var i = 1; i < table.rows.length; i++) {
+        //         var row = table.rows[i];
+        //         var rowData = [];
+        //         for (var j = 0; j < row.cells.length - 1; j++) {
+        //             rowData.push(row.cells[j].textContent.trim());
+        //         }
+        //         tableData.push(rowData);
+        //     }
+            
+        //     // Add table to PDF
+        //     doc.autoTable({
+        //         head: [headers],
+        //         body: tableData,
+        //         startY: 70,
+        //         styles: {
+        //             fontSize: 9,
+        //             cellPadding: 3,
+        //         },
+        //         headStyles: {
+        //             fillColor: [41, 128, 185],
+        //             textColor: 255,
+        //             fontStyle: 'bold'
+        //         },
+        //         alternateRowStyles: {
+        //             fillColor: [245, 245, 245]
+        //         },
+        //         margin: { top: 70, left: 20, right: 20 },
+        //         tableWidth: 'auto',
+        //         columnStyles: {
+        //             0: { cellWidth: 15 }, // Sl#
+        //             1: { cellWidth: 25 }, // Day
+        //             2: { cellWidth: 80 }, // Planning
+        //             3: { cellWidth: 25 }, // Date
+        //             4: { cellWidth: 20 }, // Time
+        //             5: { cellWidth: 25 }  // Mark
+        //         }
+        //     });
+            
+        //     // Footer
+        //     var pageCount = doc.internal.getNumberOfPages();
+        //     for (var i = 1; i <= pageCount; i++) {
+        //         doc.setPage(i);
+        //         doc.setFontSize(8);
+        //         doc.text('Page ' + i + ' of ' + pageCount, 105, 285, { align: 'center' });
+        //         doc.text('© 2025 Your Company Name. All rights reserved.', 105, 290, { align: 'center' }); // CHANGE THIS
+        //     }
+            
+        //     // Save the PDF
+        //     var fileName = 'Planning_Report_' + today.toISOString().slice(0, 10) + '.pdf'; // CUSTOMIZE FILENAME
+        //     doc.save(fileName);
+        // }
         function downloadPDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF('portrait', 'mm', 'a4');
@@ -361,16 +459,16 @@
             // Company Header - CUSTOMIZE THESE DETAILS
             doc.setFontSize(20);
             doc.setFont('helvetica', 'bold');
-            doc.text('YOUR COMPANY NAME', 105, 20, { align: 'center' }); // CHANGE THIS
+            doc.text('YOUR COMPANY NAME', doc.internal.pageSize.getWidth() / 2, 20, { align: 'center' });
             
             doc.setFontSize(12);
             doc.setFont('helvetica', 'normal');
-            doc.text('Your Company Tagline', 105, 28, { align: 'center' }); // CHANGE THIS
+            doc.text('Your Company Tagline', doc.internal.pageSize.getWidth() / 2, 28, { align: 'center' });
             
             // Company Details - CUSTOMIZE THESE
             doc.setFontSize(10);
-            doc.text('Email: your-email@company.com | Phone: +1-234-567-8900', 105, 35, { align: 'center' }); // CHANGE THIS
-            doc.text('Website: www.yourcompany.com', 105, 40, { align: 'center' }); // CHANGE THIS
+            doc.text('Email: your-email@company.com | Phone: +1-234-567-8900', doc.internal.pageSize.getWidth() / 2, 35, { align: 'center' });
+            doc.text('Website: www.yourcompany.com', doc.internal.pageSize.getWidth() / 2, 40, { align: 'center' });
             
             // Add a line separator
             doc.setLineWidth(0.5);
@@ -379,14 +477,14 @@
             // Report Title
             doc.setFontSize(14);
             doc.setFont('helvetica', 'bold');
-            doc.text('PLANNING REPORT', 105, 55, { align: 'center' });
+            doc.text('PLANNING REPORT', doc.internal.pageSize.getWidth() / 2, 55, { align: 'center' });
             
             // Date of generation
             var today = new Date();
             var dateStr = today.toLocaleDateString('en-GB') + ' ' + today.toLocaleTimeString('en-GB', {hour12: false});
             doc.setFontSize(10);
             doc.setFont('helvetica', 'normal');
-            doc.text('Generated on: ' + dateStr, 105, 62, { align: 'center' });
+            doc.text('Generated on: ' + dateStr, doc.internal.pageSize.getWidth() / 2, 62, { align: 'center' });
             
             // Get table data
             var table = document.getElementById('add_planner');
@@ -409,32 +507,39 @@
                 tableData.push(rowData);
             }
             
+            // Calculate table positioning for centering
+            var pageWidth = doc.internal.pageSize.getWidth();
+            var tableWidth = 190; // Total width of all columns
+            var startX = (pageWidth - tableWidth) / 2;
+            
             // Add table to PDF
             doc.autoTable({
                 head: [headers],
                 body: tableData,
                 startY: 70,
+                margin: { left: startX },
                 styles: {
                     fontSize: 9,
                     cellPadding: 3,
+                    halign: 'center'
                 },
                 headStyles: {
                     fillColor: [41, 128, 185],
                     textColor: 255,
-                    fontStyle: 'bold'
+                    fontStyle: 'bold',
+                    halign: 'center'
                 },
                 alternateRowStyles: {
                     fillColor: [245, 245, 245]
                 },
-                margin: { top: 70, left: 20, right: 20 },
-                tableWidth: 'auto',
+                theme: 'grid',
                 columnStyles: {
-                    0: { cellWidth: 15 }, // Sl#
-                    1: { cellWidth: 25 }, // Day
-                    2: { cellWidth: 80 }, // Planning
-                    3: { cellWidth: 25 }, // Date
-                    4: { cellWidth: 20 }, // Time
-                    5: { cellWidth: 25 }  // Mark
+                    0: { cellWidth: 15, halign: 'center' }, // Sl#
+                    1: { cellWidth: 25, halign: 'center' }, // Day
+                    2: { cellWidth: 80, halign: 'left' },   // Planning (left aligned for readability)
+                    3: { cellWidth: 25, halign: 'center' }, // Date
+                    4: { cellWidth: 20, halign: 'center' }, // Time
+                    5: { cellWidth: 25, halign: 'center' }  // Mark
                 }
             });
             
@@ -443,14 +548,15 @@
             for (var i = 1; i <= pageCount; i++) {
                 doc.setPage(i);
                 doc.setFontSize(8);
-                doc.text('Page ' + i + ' of ' + pageCount, 105, 285, { align: 'center' });
-                doc.text('© 2025 Your Company Name. All rights reserved.', 105, 290, { align: 'center' }); // CHANGE THIS
+                doc.text('Page ' + i + ' of ' + pageCount, doc.internal.pageSize.getWidth() / 2, 285, { align: 'center' });
+                doc.text('© 2025 Your Company Name. All rights reserved.', doc.internal.pageSize.getWidth() / 2, 290, { align: 'center' });
             }
             
             // Save the PDF
-            var fileName = 'Planning_Report_' + today.toISOString().slice(0, 10) + '.pdf'; // CUSTOMIZE FILENAME
+            var fileName = 'Planning_Report_' + today.toISOString().slice(0, 10) + '.pdf';
             doc.save(fileName);
         }
+
     </script>
 </body>
 </html>
