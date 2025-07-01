@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="/images/favicon/june.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="container my-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width:62%">Planing <span style="color:red">*</span></th>
+                    <th style="width:10%">Date <span style="color:red">*</span></th>
+                    <th style="width:10%">Time <span style="color:red">*</span></th>
+                    <th style="width:10%">Mark <span style="color:red">*</span></th>
+                    <th style="width:8%">Action <span style="color:red">*</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input class="form-control" type="text" name="txt_planning" id="txt_planning" onkeyup="return validate_text_field('txt_planning', 'error_planning', 'Planning Required !!!');">
+                        <span id="error_planning" style="color: red; font-size:10px;"></span>
+                    </td>
+
+                    
+                    <td>
+                        <input class="form-control" type="date" name="txt_date" id="txt_date" value="" onkeyup="return validate_text_field('txt_date', 'error_date', 'Date Required !!!');" onchange="return validate_text_field('txt_date', 'error_date', 'Date Required !!!');">
+                        <span id="error_date" style="color: red; font-size:10px;"></span>
+                    </td>
+
+                    <td>
+                        <input class="form-control" type="time" name="txt_time" id="txt_time" value="" onkeyup="return validate_text_field('txt_time', 'error_time', 'Time Required !!!');" onchange="return validate_text_field('txt_time', 'error_time', 'Time Required !!!');">
+                        <span id="error_time" style="color: red; font-size:10px;"></span>
+                    </td>
+
+                    <td>
+                        <select name="ddl_mark" id="ddl_mark" class="form-control select2" style="width:100%; color: #000;" onchange="return validate_dropdowns('ddl_mark', 'error_mark', 'Select Mark !!!');">
+                            <option class="bg-light-subtle" value="0">Select</option>                    
+                            <option class="bg-light-subtle" value="1">Primary</option>      
+                            <option class="bg-light-subtle" value="2">Warning</option>
+                            <option class="bg-light-subtle" value="3">Success</option>
+                            <option class="bg-light-subtle" value="4">Danger</option>
+                            <option class="bg-light-subtle" value="5">Info</option>
+                        </select>
+                        <span id="error_mark" style="color: red; font-size: 10px;"></span>
+                    </td>
+
+                    <td class="text-center">
+                        <i class="fa fa-plus-square" id="btn_Submit" aria-hidden="true" style="font-size:22px;margin: 7px; cursor:pointer; background-color: white;color: #286090;" onclick="return add_buffer_in()"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container-fluid">
+        <table id="add_planner" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width:5%">Sl#</th>
+                    <th style="width:8%">Day</th>
+                    <th style="width:55%">Planing</th>
+                    <th style="width:8%">Date</th>
+                    <th style="width:8%">Time</th>
+                    <th style="width:8%">Mark</th>
+                    <th style="width:8%">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    
+
+
+
+
+
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script>
+        date_time_insert_in_input_field();
+        loadHeaderAndSetActive();
+
+        function date_time_insert_in_input_field()
+        {
+            var today = new Date();
+            var yyyy = today.getFullYear();
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var dd = String(today.getDate()).padStart(2, '0');
+            var currentDate = yyyy + '-' + mm + '-' + dd;
+            $('#txt_date').val(currentDate);
+
+            var hh = String(today.getHours()).padStart(2, '0');
+            var mi = String(today.getMinutes()).padStart(2, '0');
+            var ss = String(today.getSeconds()).padStart(2, '0');
+            var currentTime = hh + ':' + mi + ':' + ss;
+            $('#txt_time').val(currentTime);
+        }
+
+        function add_buffer_in()
+        {
+            var planning="";
+            var date="";
+            var time="";
+            var mark="";
+
+            planning = $('#txt_planning').val().trim();
+            date = $('#txt_date').val().trim();
+            time = $('#txt_time').val().trim();
+            mark = $('#ddl_mark :selected').text().trim();
+
+            if(planning=='')
+            {
+                $('#error_planning').html('Planning Required !!!');
+                $('#txt_planning').focus();
+                $('#txt_planning').css('border-color', 'red');
+                return false;
+            }
+
+            if(date=='')
+            {
+                $('#error_date').html('Date Required !!!');
+                $('#txt_date').focus();
+                $('#txt_date').css('border-color', 'red');
+                return false;
+            }
+
+            if(time=='')
+            {
+                $('#error_time').html('Time Required !!!');
+                $('#txt_time').focus();
+                $('#txt_time').css('border-color', 'red');
+                return false;
+            }
+
+            if(mark==0)
+            {
+                $('#error_mark').html('Select Mark !!!');
+                $('#ddl_mark').focus();
+                $('#ddl_mark').css('border-color', 'red');
+                return false;
+            }
+            var dayName = "";
+            if (date !== "") {
+                var dateObj = new Date(date); // create JS date object from yyyy-mm-dd
+
+                var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                dayName = days[dateObj.getDay()];
+            }
+
+            var dateDMY = date.split("-").reverse().join("-");
+
+            Table_ID = document.getElementById('add_planner');
+            rowCount = (Table_ID.rows.length);
+            row = Table_ID.insertRow(rowCount);
+
+            counter = rowCount;
+
+            row.insertCell(0).innerHTML = counter;
+            row.cells[0].style.textAlign = 'center';
+
+            row.insertCell(1).innerHTML = dayName;
+            row.cells[1].style.textAlign = 'left';
+
+            row.insertCell(2).innerHTML = planning;
+            row.cells[2].style.textAlign = 'left';
+
+            row.insertCell(3).innerHTML = dateDMY;
+            row.cells[3].style.textAlign = 'left';
+
+            row.insertCell(4).innerHTML = time;
+            row.cells[4].style.textAlign = 'left';
+
+            row.insertCell(5).innerHTML = mark;
+            row.cells[5].style.textAlign = 'left';
+
+            row.insertCell(6).innerHTML = '<i class="fa fa-remove" style="color: #d90707; cursor: pointer; text-align:center;" onclick="Javascript:delete_buffer_in(this);" title="Delete"></i>  <i class="fa fa-edit" style="color: #d90707; cursor: pointer; text-align:center;" onclick="Javascript:edit_buffer_in(this);" title="Delete"></i>';
+            row.cells[6].style.textAlign = 'center';
+
+
+            // Set date input to current date dynamically
+            var today = new Date();
+            var yyyy = today.getFullYear();
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var dd = String(today.getDate()).padStart(2, '0');
+            var currentDate = yyyy + '-' + mm + '-' + dd;
+
+            var hh = String(today.getHours()).padStart(2, '0');
+            var mi = String(today.getMinutes()).padStart(2, '0');
+            var ss = String(today.getSeconds()).padStart(2, '0');
+            var currentTime = hh + ':' + mi + ':' + ss;
+
+            $('#txt_planning').val('');
+            $('#txt_date').val(currentDate);
+            $('#ddl_mark').val(0);
+            $('#txt_time').val(currentTime);
+        }
+
+        function validate_dropdowns(id, error_id, massage)
+        {
+            value = $('#' + id).val().trim();
+            if (value == '0') 
+            {
+                $('#' + error_id).html(massage);
+                $('#' + id).focus();
+                $('#' + id).css('border-color', 'red');
+                $('#btn_Submit').attr('disabled', true);
+            } 
+            else 
+            {
+                $('#' + error_id).html('');
+                $('#' + id).css('border-color', '#d2d6de');
+                $('#btn_Submit').attr('disabled', false);
+            }
+        }
+
+        function validate_text_field(id, error_id, massage)
+        {
+            value = $('#' + id).val().trim();
+
+            if (value == '') 
+            {
+                $('#' + error_id).html(massage);
+                $('#' + id).focus();
+                $('#' + id).css('border-color', 'red');
+                $('#btn_Submit').attr('disabled', true);
+            } 
+            else 
+            {
+                $('#' + error_id).html('');
+                $('#' + id).css('border-color', '#d2d6de');
+                $('#btn_Submit').attr('disabled', false);
+            }
+        }
+        
+        function delete_buffer_in(obj)
+        {
+            var Table_ID = document.getElementById('add_planner');
+            var index = obj.parentNode.parentNode.rowIndex;
+            Table_ID.deleteRow(index);
+
+            var rowCount = (Table_ID.rows.length);
+
+            for (var i = 2; i < rowCount; i++)
+            {
+                counter = i-1; 
+                Table_ID.rows[i].cells[0].innerHTML = counter;
+            }
+        }
+
+        function edit_buffer_in(element) {
+            // Wrap the clicked element with jQuery and find the closest <tr>
+            var $row = $(element).closest('tr');
+
+            // Get all <td> cells in this row
+            var $cells = $row.find('td');
+
+            // Retrieve values from each cell
+            var serialNo = $cells.eq(0).text().trim();
+            var dayName = $cells.eq(1).text().trim();
+            var planning = $cells.eq(2).text().trim();
+            var dateDMY = $cells.eq(3).text().trim();
+            var time = $cells.eq(4).text().trim();
+            var mark = $cells.eq(5).text().trim();
+
+            var dateYMD = dateDMY.split("-").reverse().join("-");
+
+            // Log or use these variables
+            console.log('Serial No:', serialNo);
+            console.log('Day:', dayName);
+            console.log('Planning:', planning);
+            console.log('Date:', dateYMD);
+            console.log('Time:', time);
+            console.log('Mark:', mark);
+
+            // Example: populate form fields
+            // $('#txt_day_name').val(dayName);
+            $('#txt_planning').val(planning);
+            $('#txt_date').val(dateYMD);
+            $('#ddl_mark :selected').text(mark);
+            $('#txt_time').val(time);
+            
+            var Table_ID = document.getElementById('add_planner');
+            var index = element.parentNode.parentNode.rowIndex;
+            Table_ID.deleteRow(index);
+
+        }
+
+        function loadHeaderAndSetActive() 
+        {
+            $("#header").load("header.html", function() 
+            {
+                // After header is loaded, determine the current page and set active link
+                var currentPage = window.location.pathname.split("/").pop();
+
+                if (currentPage === "" || currentPage === "index.html") 
+                {
+                    $("#menu-home").addClass("active");
+                } 
+                else if (currentPage === "about.html") 
+                {
+                    $("#menu-about").addClass("active");
+                } 
+                else if (currentPage === "contact.html") 
+                {
+                    $("#menu-contact").addClass("active");
+                }
+                else if (currentPage === "planner.html") 
+                {
+                    $("#menu-planner").addClass("active");
+                }
+            });
+        }
+        
+    </script>
+</body>
+</html>
