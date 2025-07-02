@@ -14,7 +14,7 @@
 <body>
     <div id="header"></div>
 
-    <style>
+    <!-- <style>
         @media (max-width: 768px) {
         .container-fluid {
             overflow-x: auto;
@@ -28,7 +28,34 @@
             white-space: nowrap;
         }
         }
+    </style> -->
+    <style>
+        @media (max-width: 768px) {
+        .container.my-4,
+        .container-fluid {
+            overflow-x: auto;
+        }
+        .container.my-4 table,
+        .container-fluid table {
+            width: 100%;
+            min-width: 600px; /* Adjust if needed */
+            display: block;
+        }
+        .container.my-4 table thead,
+        .container.my-4 table tbody,
+        .container.my-4 table th,
+        .container.my-4 table td,
+        .container.my-4 table tr,
+        .container-fluid table thead,
+        .container-fluid table tbody,
+        .container-fluid table th,
+        .container-fluid table td,
+        .container-fluid table tr {
+            white-space: nowrap;
+        }
+        }
     </style>
+
 
 
     <div class="container my-4">
