@@ -139,7 +139,7 @@
 
 
 
-
+    <!-- <div id="footer"></div>     -->
     <script src="sweetalert2.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
@@ -398,104 +398,7 @@
             }
         }
         
-        // function downloadPDF() 
-        // {
-        //     const { jsPDF } = window.jspdf;
-        //     const doc = new jsPDF('portrait', 'mm', 'a4');
-            
-        //     // Company Header - CUSTOMIZE THESE DETAILS
-        //     doc.setFontSize(20);
-        //     doc.setFont('helvetica', 'bold');
-        //     doc.text('YOUR COMPANY NAME', 105, 20, { align: 'center' }); // CHANGE THIS
-            
-        //     doc.setFontSize(12);
-        //     doc.setFont('helvetica', 'normal');
-        //     doc.text('Your Company Tagline', 105, 28, { align: 'center' }); // CHANGE THIS
-            
-        //     // Company Details - CUSTOMIZE THESE
-        //     doc.setFontSize(10);
-        //     doc.text('Email: your-email@company.com | Phone: +1-234-567-8900', 105, 35, { align: 'center' }); // CHANGE THIS
-        //     doc.text('Website: www.yourcompany.com', 105, 40, { align: 'center' }); // CHANGE THIS
-            
-        //     // Add a line separator
-        //     doc.setLineWidth(0.5);
-        //     doc.line(20, 45, 190, 45);
-            
-        //     // Report Title
-        //     doc.setFontSize(14);
-        //     doc.setFont('helvetica', 'bold');
-        //     doc.text('PLANNING REPORT', 105, 55, { align: 'center' });
-            
-        //     // Date of generation
-        //     var today = new Date();
-        //     var dateStr = today.toLocaleDateString('en-GB') + ' ' + today.toLocaleTimeString('en-GB', {hour12: false});
-        //     doc.setFontSize(10);
-        //     doc.setFont('helvetica', 'normal');
-        //     doc.text('Generated on: ' + dateStr, 105, 62, { align: 'center' });
-            
-        //     // Get table data
-        //     var table = document.getElementById('add_planner');
-        //     var tableData = [];
-        //     var headers = [];
-            
-        //     // Get headers (excluding Action column)
-        //     var headerRow = table.rows[0];
-        //     for (var j = 0; j < headerRow.cells.length - 1; j++) {
-        //         headers.push(headerRow.cells[j].textContent.trim());
-        //     }
-            
-        //     // Get data rows (excluding Action column)
-        //     for (var i = 1; i < table.rows.length; i++) {
-        //         var row = table.rows[i];
-        //         var rowData = [];
-        //         for (var j = 0; j < row.cells.length - 1; j++) {
-        //             rowData.push(row.cells[j].textContent.trim());
-        //         }
-        //         tableData.push(rowData);
-        //     }
-            
-        //     // Add table to PDF
-        //     doc.autoTable({
-        //         head: [headers],
-        //         body: tableData,
-        //         startY: 70,
-        //         styles: {
-        //             fontSize: 9,
-        //             cellPadding: 3,
-        //         },
-        //         headStyles: {
-        //             fillColor: [41, 128, 185],
-        //             textColor: 255,
-        //             fontStyle: 'bold'
-        //         },
-        //         alternateRowStyles: {
-        //             fillColor: [245, 245, 245]
-        //         },
-        //         margin: { top: 70, left: 20, right: 20 },
-        //         tableWidth: 'auto',
-        //         columnStyles: {
-        //             0: { cellWidth: 15 }, // Sl#
-        //             1: { cellWidth: 25 }, // Day
-        //             2: { cellWidth: 80 }, // Planning
-        //             3: { cellWidth: 25 }, // Date
-        //             4: { cellWidth: 20 }, // Time
-        //             5: { cellWidth: 25 }  // Mark
-        //         }
-        //     });
-            
-        //     // Footer
-        //     var pageCount = doc.internal.getNumberOfPages();
-        //     for (var i = 1; i <= pageCount; i++) {
-        //         doc.setPage(i);
-        //         doc.setFontSize(8);
-        //         doc.text('Page ' + i + ' of ' + pageCount, 105, 285, { align: 'center' });
-        //         doc.text('© 2025 Your Company Name. All rights reserved.', 105, 290, { align: 'center' }); // CHANGE THIS
-        //     }
-            
-        //     // Save the PDF
-        //     var fileName = 'Planning_Report_' + today.toISOString().slice(0, 10) + '.pdf'; // CUSTOMIZE FILENAME
-        //     doc.save(fileName);
-        // }
+        
         function downloadPDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF('portrait', 'mm', 'a4');
@@ -601,6 +504,7 @@
             doc.save(fileName);
         }
 
+        // $("#footer").load("footer.html")
     </script>
 </body>
 </html>
