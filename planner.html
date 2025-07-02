@@ -14,6 +14,23 @@
 <body>
     <div id="header"></div>
 
+    <style>
+        @media (max-width: 768px) {
+        .container-fluid {
+            overflow-x: auto;
+        }
+        #add_planner {
+            width: 100%;
+            min-width: 600px; /* adjust as needed */
+            display: block;
+        }
+        #add_planner thead, #add_planner tbody, #add_planner th, #add_planner td, #add_planner tr {
+            white-space: nowrap;
+        }
+        }
+    </style>
+
+
     <div class="container my-4">
         <table class="table table-bordered">
             <thead>
