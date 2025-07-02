@@ -10,8 +10,95 @@
 </head>
 <body>
     <div id="header"></div>
+    <style>
+        .fixed-carousel-height {
+            height: 550px; /* This is the fixed height for the entire carousel */
+        }
 
-    this is index page 
+        .fixed-carousel-height .carousel-item,
+        .fixed-carousel-height img {
+            height: 100%;
+        }
+
+        .fixed-carousel-height img {
+            width: 100%;
+            object-fit: cover;
+            /* filter: blur(2px); */
+        }
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.4);   /* Optional: dark overlay for contrast */
+            backdrop-filter: blur(5px);             /* This blurs what's behind the caption */
+            -webkit-backdrop-filter: blur(5px);     /* For Safari support */
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: transparent !important; /* Remove Bootstrap's default dark background */
+            background-image: none !important;       /* Remove Bootstrap's default arrow SVG */
+        }
+        /* Adjust for tablets & small screens */
+        @media (max-width: 768px) {
+        .fixed-carousel-height {
+            height: 250px; /* or any height that looks good on tablets */
+        }
+        }
+
+        /* Adjust for small phones */
+        @media (max-width: 480px) {
+        .fixed-carousel-height {
+            height: 180px; /* tighter height for small devices */
+        }
+        }
+
+    </style>
+
+
+    <div class="container-fluid ratio ratio-16x9">
+        <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+            <div class="carousel-inner fixed-carousel-height">
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img src="./images/index-caro/laptop_notebook.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img src="./images/index-caro/desk_notebook.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img src="./images/index-caro/time_management.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Fourth slide label</h5>
+                        <p>Some representative placeholder content for the Fourth slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item active" data-bs-interval="4000">
+                    <img src="./images/index-caro/success_company.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
     
 
 
