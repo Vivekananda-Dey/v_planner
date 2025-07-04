@@ -108,29 +108,29 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="text_city" id="text_city" placeholder="City...." onkeyup="return validate_text_field('text_city','error_city','Enter City');">
+                                <input type="text" class="form-control" name="txt_city" id="txt_city" placeholder="City...." onkeyup="return validate_text_field('txt_city','error_city','Enter City');">
                                 <span id="error_city" style="color: red;"></span>
                             </div>
 
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="text_state" id="text_state" placeholder="State...." onkeyup="return validate_text_field('text_state','error_state','Enter State');">
+                                <input type="text" class="form-control" name="txt_state" id="txt_state" placeholder="State...." onkeyup="return validate_text_field('txt_state','error_state','Enter State');">
                                 <span id="error_state" style="color: red;"></span>
                             </div>
 
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="text_country" id="text_country" placeholder="Country...." onkeyup="return validate_text_field('text_country','error_country','Enter Country');">
+                                <input type="text" class="form-control" name="txt_country" id="txt_country" placeholder="Country...." onkeyup="return validate_text_field('txt_country','error_country','Enter Country');">
                                 <span id="error_country" style="color: red;"></span>
                             </div>
                             
                             <!-- !Others -->
                             <div class="col-md-4">
-                                <select name="ddl-gender" id="ddl-gender" class="form-select">
+                                <select name="ddl-gender" id="ddl-gender" class="form-select" onchange="return validate_dropdowns('ddl-gender', 'error_gender', 'Select Gender');">
                                     <option value="0">Select</option>
                                     <option value="M">Male</option>
                                     <option value="F">Female</option>
                                     <option value="P">Prefer Not To say</option>
                                 </select>
-                                <span style="color: red;"></span>
+                                <span id="error_gender" style="color: red;"></span>
                             </div>
 
                             <div class="col-md-4">
@@ -151,7 +151,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input type="button" class="btn btn-primary" onclick="save_t_form()" value="Submit">
+                                <input type="button" id="btn_Submit" class="btn btn-primary" onclick="save_t_form()" value="Submit">
                             </div>
                         </div>
                        
@@ -180,8 +180,130 @@
     <script>
         loadHeaderAndSetActive();
 
-        function save_t_form() {
-            //event.preventDefault(); // stop actual submission
+        function save_t_form() 
+        {
+            var first_name = $('#txt_first_name').val().trim();
+            var middle_name = $('#txt_middle_name').val().trim();
+            var last_name = $('#txt_last_name').val().trim();
+            
+            var email = $('#txt_email').val().trim();
+            var phone_1 = $('#txt_phone_1').val().trim();
+            var phone_2 = $('#txt_phone_2').val().trim();
+            
+            var address_line_1 = $('#txt_address_line_1').val().trim();
+            var address_line_2 = $('#txt_address_line_2').val().trim();
+            
+            var city = $('#txt_city').val().trim();
+            var state = $('#txt_state').val().trim();
+            var country = $('#txt_country').val().trim();
+            
+            var gender = $('#ddl-gender').val().trim();
+            
+            var dob = $('#txt-dob').val().trim(); 
+            var language = $('#txt_language').val().trim(); 
+            
+            var enquiry = $('#txt_enquiry').val().trim(); 
+
+            if(first_name==='')
+            {   
+                $('#txt_first_name').focus();
+                $('#txt_first_name').css('borderColor','red');
+                $('#error_first_name').html('Enter First Name');
+                $('#btn_Submit').attr('disabled', true);
+                return false;        
+            }
+
+            if(last_name==='')
+            {   
+                $('#txt_last_name').focus();
+                $('#txt_last_name').css('borderColor','red');
+                $('#error_last_name').html('Enter Last Name');
+                $('#btn_Submit').attr('disabled', true);
+                return false;        
+            }
+
+            if(email==='')
+            {   
+                $('#txt_email').focus();
+                $('#txt_email').css('borderColor','red');
+                $('#error_email').html('Enter Email');
+                $('#btn_Submit').attr('disabled', true);
+                return false;        
+            }
+
+            if(phone_1==='')
+            {   
+                $('#txt_phone_1').focus();
+                $('#txt_phone_1').css('borderColor','red');
+                $('#error_phone_1').html('Enter Number');
+                $('#btn_Submit').attr('disabled', true);
+                return false;        
+            }
+
+            if(address_line_1==='')
+            {   
+                $('#txt_address_line_1').focus();
+                $('#txt_address_line_1').css('borderColor','red');
+                $('#error_address_line_1').html('Enter Address');
+                $('#btn_Submit').attr('disabled', true);
+                return false;        
+            }
+
+            if(city==='')
+            {   
+                $('#txt_city').focus();
+                $('#txt_city').css('borderColor','red');
+                $('#error_city').html('Enter City');
+                $('#btn_Submit').attr('disabled', true);
+                return false;        
+            }
+
+            if(state==='')
+            {   
+                $('#txt_state').focus();
+                $('#txt_state').css('borderColor','red');
+                $('#error_state').html('Enter State');
+                $('#btn_Submit').attr('disabled', true);
+                return false;        
+            }
+
+            if(country==='')
+            {   
+                $('#txt_country').focus();
+                $('#txt_country').css('borderColor','red');
+                $('#error_country').html('Enter Country');
+                $('#btn_Submit').attr('disabled', true);
+                return false;        
+            }
+            
+
+            if(gender==='0')
+            {   
+                $('#ddl-gender').focus();
+                $('#error_gender').html('Select Gender');
+                $('#btn_Submit').attr('disabled', true);
+                return false;        
+            }
+
+            if(language==='')
+            {   
+                $('#txt_language').focus();
+                $('#txt_language').css('borderColor','red');
+                $('#error_language').html('Enter Language');
+                $('#btn_Submit').attr('disabled', true);
+                return false;        
+            }
+
+            if(enquiry==='')
+            {   
+                $('#txt_enquiry').focus();
+                $('#txt_enquiry').css('borderColor','red');
+                $('#error_enquiry').html('Enter Enquiry');
+                $('#btn_Submit').attr('disabled', true);
+                return false;        
+            }
+
+
 
             // Immediately slide up the form
             $('#enquiry_form').slideUp(500);
@@ -253,6 +375,23 @@
             value = $('#' + id).val().trim();
 
             if (value == '') 
+            {
+                $('#' + error_id).html(massage);
+                $('#' + id).focus();
+                $('#' + id).css('border-color', 'red');
+                $('#btn_Submit').attr('disabled', true);
+            } 
+            else 
+            {
+                $('#' + error_id).html('');
+                $('#' + id).css('border-color', '#d2d6de');
+                $('#btn_Submit').attr('disabled', false);
+            }
+        }
+        function validate_dropdowns(id, error_id, massage)
+        {
+            value = $('#' + id).val().trim();
+            if (value == '0') 
             {
                 $('#' + error_id).html(massage);
                 $('#' + id).focus();
