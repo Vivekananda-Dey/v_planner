@@ -14,21 +14,6 @@
 <body>
     <div id="header"></div>
 
-    <!-- <style>
-        @media (max-width: 768px) {
-        .container-fluid {
-            overflow-x: auto;
-        }
-        #add_planner {
-            width: 100%;
-            min-width: 600px; /* adjust as needed */
-            display: block;
-        }
-        #add_planner thead, #add_planner tbody, #add_planner th, #add_planner td, #add_planner tr {
-            white-space: nowrap;
-        }
-        }
-    </style> -->
     <style>
         @media (max-width: 768px) {
         .container.my-4,
@@ -112,8 +97,7 @@
         </table>
     </div>
 
-    <div class="container-fluid">
-        <!-- icon pdf -->
+    <div class="container">
         <div class="row mb-3">
             <div class="col-12 text-end">
                 <button class="btn btn-danger" onclick="downloadPDF()" id="pdfDownloadBtn" style="display:none;">
@@ -121,6 +105,11 @@
                 </button>
             </div>
         </div>
+    </div>
+
+    <div class="container-fluid">
+        <!-- icon pdf -->
+        
         <!-- icon pdf -->
         <table id="add_planner" class="table table-bordered">
             <thead>
@@ -433,16 +422,16 @@
             // Company Header - CUSTOMIZE THESE DETAILS
             doc.setFontSize(20);
             doc.setFont('helvetica', 'bold');
-            doc.text('YOUR COMPANY NAME', doc.internal.pageSize.getWidth() / 2, 20, { align: 'center' });
+            doc.text('V-PLANNER BY VIVEKANANDA DEY', doc.internal.pageSize.getWidth() / 2, 20, { align: 'center' });
             
             doc.setFontSize(12);
             doc.setFont('helvetica', 'normal');
-            doc.text('Your Company Tagline', doc.internal.pageSize.getWidth() / 2, 28, { align: 'center' });
+            doc.text('Master Your Days, Shape Your Dream', doc.internal.pageSize.getWidth() / 2, 28, { align: 'center' });
             
             // Company Details - CUSTOMIZE THESE
             doc.setFontSize(10);
-            doc.text('Email: your-email@company.com | Phone: +1-234-567-8900', doc.internal.pageSize.getWidth() / 2, 35, { align: 'center' });
-            doc.text('Website: www.yourcompany.com', doc.internal.pageSize.getWidth() / 2, 40, { align: 'center' });
+            doc.text('Email: v.dey2016vd@gmail.com | Phone: +1-234-567-8900', doc.internal.pageSize.getWidth() / 2, 35, { align: 'center' });
+            doc.text('Website: vivekananda.great-site.net', doc.internal.pageSize.getWidth() / 2, 40, { align: 'center' });
             
             // Add a line separator
             doc.setLineWidth(0.5);
