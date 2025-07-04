@@ -50,6 +50,11 @@
             height: 180px; /* tighter height for small devices */
         }
         }
+        .actives{
+        background-color: #000;
+        color: #fff !important;
+        padding: 5px;
+    }
 
     </style>
 
@@ -219,8 +224,30 @@
                     $("#menu-planner").addClass("active");
                 }
             });
+            $("#footer").load("footer.html", function() 
+            {
+                // After header is loaded, determine the current page and set active link
+                var currentPage = window.location.pathname.split("/").pop();
+
+                if (currentPage === "" || currentPage === "index.html") 
+                {
+                    $("#menu-homes").addClass("actives");
+                } 
+                else if (currentPage === "about.html") 
+                {
+                    $("#menu-abouts").addClass("actives");
+                } 
+                else if (currentPage === "contact.html") 
+                {
+                    $("#menu-contacts").addClass("actives");
+                }
+                else if (currentPage === "planner.html") 
+                {
+                    $("#menu-planners").addClass("actives");
+                }
+            });
         }
-        $("#footer").load("footer.html")
+        // $("#footer").load("footer.html")
     </script>
 </body>
 </html>

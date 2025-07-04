@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="images/favicon/june.ico" type="image/x-icon">
 </head>
+<style>
+    .actives{
+        background-color: #000;
+        color: #fff !important;
+        padding: 5px;
+        border-radius: 5px;
+    }
+</style>
 <body>
     <div id="header"></div>
 
@@ -15,28 +23,148 @@
         <div class="col-md-12"><h1>Contact Me!</h1></div>
         <div class="row">
             <div class="col-md-6 border">
-                <h4 class="text-center my-1 py-1">Reach me</h4>
+                <h4 class="text-center my-1 py-1"><u>Reach me</u></h4>
                 <div class="">
+
                     <div class="d-flex align-items-center p-2">
-                        <i class="fa-solid fa-globe fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" href="https://vivekananda.great-site.net/">My Portfolio</a></h5>
+                        <i class="fa-solid fa-home fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" target="blank" href="https://vivekananda.great-site.net/">1234,Abc Road Kolkata- 700034</a></h5>
+                    </div>
+
+                    <div class="d-flex align-items-center p-2">
+                        <i class="fa-brands fa-linkedin-in fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" target="blank" href="https://www.linkedin.com/in/vivekananda-dey-b8a563214/">Linkedin/Vivekananda-Dey</a></h5>
+                    </div>
+
+                    <div class="d-flex align-items-center p-2">
+                        <i class="fa-brands fa-github fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" target="blank" href="https://github.com/Vivekananda-Dey/">github/Vivekananda-dey</a></h5>
+                    </div>
+
+                    <div class="d-flex align-items-center p-2">
+                        <i class="fa-solid fa-phone fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" target="blank" href="https://vivekananda.great-site.net/">+91 7XXX055XXX</a></h5>
+                    </div>
+
+                    <div class="d-flex align-items-center p-2">
+                        <i class="fa-solid fa-globe fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" target="blank" href="https://vivekananda.great-site.net/">vivekananda.great-site.net</a></h5>
                     </div>
                     <div class="d-flex align-items-center p-2">
-                        <i class="fa-brands fa-whatsapp fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" href="https://vivekananda.great-site.net/">My Whatsapp</a></h5>
+                        <i class="fa-brands fa-whatsapp fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" target="blank" href="https://vivekananda.great-site.net/">My Whatsapp</a></h5>
                     </div>
                     <div class="d-flex align-items-center p-2">
-                        <i class="fa-brands fa-facebook fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" href="https://vivekananda.great-site.net/">My Facebook</a></h5>
+                        <i class="fa-brands fa-facebook fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" target="blank" href="https://vivekananda.great-site.net/">My Facebook</a></h5>
                     </div>
                     <div class="d-flex align-items-center p-2">
-                        <i class="fa-brands fa-instagram fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" href="https://vivekananda.great-site.net/">My Instagram</a></h5>
+                        <i class="fa-brands fa-instagram fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" target="blank" href="https://vivekananda.great-site.net/">My Instagram</a></h5>
                     </div>
                     <div class="d-flex align-items-center p-2">
-                        <i class="fa-brands fa-x-twitter fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" href="https://vivekananda.great-site.net/">My Twitter</a></h5>
+                        <i class="fa-brands fa-x-twitter fa-xl"></i>&nbsp;&nbsp;<h5 class="m-0"><a style="text-decoration: none; cursor: pointer;" target="blank" href="https://vivekananda.great-site.net/">My Twitter</a></h5>
                     </div>
                 </div>
             </div>
             
             <div class="col-md-6 border">
-                <h4 class="text-center my-1 py-1">Enquiry Form</h4>
+                <h4 class="text-center my-2 py-1"><u>Enquiry Form</u></h4>
+                <div class="my-2 py-2">
+                    <form id="enquiry_form">
+
+                        <div class="row g-4">
+
+                            <!-- !Name -->
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="txt_first_name" id="txt_first_name" placeholder="First Name" onkeyup="return validate_text_field('txt_first_name','error_first_name','Enter First Name');">
+                                <span id="error_first_name" style="color: red;"></span>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="txt_middle_name" id="txt_middle_name" placeholder="Middle Name">
+                                <!-- <span id="error_middle_name" style="color: red;"></span> -->
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="txt_last_name" id="txt_last_name" placeholder="Last Name" onkeyup="return validate_text_field('txt_last_name','error_last_name','Enter Last Name');">
+                                <span id="error_last_name" style="color: red;"></span>
+                            </div>
+
+                            
+                            <!-- !Contact -->
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" name="txt_email" id="txt_email" placeholder="Your Email" onkeyup="return validate_email_field('txt_email','error_email','Enter Email');">
+                                <span id="error_email" style="color: red;"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="txt_phone_1" id="txt_phone_1" maxlength="14"  placeholder="E.g., +91-9876543210  OR  9876543210" onkeyup="return validate_phone_field('txt_phone_1','error_phone_1','Enter Number');">
+                                <span id="error_phone_1" style="color: red;"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" name="txt_phone_2" id="txt_phone_2" maxlength="14"  placeholder="E.g., +91-9876543210  OR  9876543210" onkeyup="return validate_phone_field('txt_phone_2','error_phone_2','Enter Number');">
+                                <span id="error_phone_2" style="color: red;"></span>
+                            </div>
+
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" name="txt_address_line_1" id="txt_address_line_1"  placeholder="Address Line 1" onkeyup="return validate_text_field('txt_address_line_1','error_address_line_1','Enter Address');">
+                                <span id="error_address_line_1" style="color: red;"></span>
+                            </div>
+
+                            <div class="col-md-12">
+                                <input type="text" class="form-control" name="txt_address_line_2" id="txt_address_line_2"  placeholder="Address Line 2">
+                            </div>
+
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="text_city" id="text_city" placeholder="City...." onkeyup="return validate_text_field('text_city','error_city','Enter City');">
+                                <span id="error_city" style="color: red;"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="text_state" id="text_state" placeholder="State...." onkeyup="return validate_text_field('text_state','error_state','Enter State');">
+                                <span id="error_state" style="color: red;"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="text_country" id="text_country" placeholder="Country...." onkeyup="return validate_text_field('text_country','error_country','Enter Country');">
+                                <span id="error_country" style="color: red;"></span>
+                            </div>
+                            
+                            <!-- !Others -->
+                            <div class="col-md-4">
+                                <select name="ddl-gender" id="ddl-gender" class="form-select">
+                                    <option value="0">Select</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="P">Prefer Not To say</option>
+                                </select>
+                                <span style="color: red;"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <input type="date" class="form-control" name="txt-dob" id="txt-dob">
+                                <span style="color: red;"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="txt_language" id="txt_language" placeholder="Your Language" onkeyup="return validate_text_field('txt_language','error_language','Enter Language');">
+                                <span id="error_language" style="color: red;"></span>
+                            </div>
+
+                            <!-- !Enquiry Text Box -->
+
+                            <div class="col-md-12">
+                                <textarea name="txt_enquiry" id="txt_enquiry" class="form-control" rows="4" placeholder="Your Enquiry" onkeyup="return validate_text_field('txt_enquiry','error_enquiry','Enter Enquiry');"></textarea>
+                                <span id="error_enquiry" style="color: red;"></span>
+                            </div>
+
+                            <div class="col-md-4">
+                                <input type="button" class="btn btn-primary" onclick="save_t_form()" value="Submit">
+                            </div>
+                        </div>
+                       
+                        
+                    </form>
+
+                    <div class="col-md-12 my-5 py-5" id="form_submit" style="display: none;">
+                        <div class="alert alert-success" role="alert">
+                            <h5>Your Form Is Successfully Submitted. I Will Contact You Shortly..</h5>
+                            <p>For any emergency enquiry contact me via "Reach Me" panel on desktop you will see it in your left and on mobile you will find it on top of this form panel</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -51,6 +179,25 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
     <script>
         loadHeaderAndSetActive();
+
+        function save_t_form() {
+            //event.preventDefault(); // stop actual submission
+
+            // Immediately slide up the form
+            $('#enquiry_form').slideUp(500);
+
+            // Immediately slide down the success message
+            $('#form_submit').slideDown(500);
+
+            // After 5 seconds, hide success message & show the form again
+            setTimeout(() => {
+                $('#form_submit').slideUp(200, function() {
+                $('#enquiry_form').slideDown(800);
+                $('#enquiry_form')[0].reset(); // optional: reset form fields
+                });
+            }, 5000);
+        }
+
 
         function loadHeaderAndSetActive() 
         {
@@ -76,8 +223,98 @@
                     $("#menu-planner").addClass("active");
                 }
             });
+
+            $("#footer").load("footer.html", function() 
+            {
+                // After header is loaded, determine the current page and set active link
+                var currentPage = window.location.pathname.split("/").pop();
+
+                if (currentPage === "" || currentPage === "index.html") 
+                {
+                    $("#menu-homes").addClass("actives");
+                } 
+                else if (currentPage === "about.html") 
+                {
+                    $("#menu-abouts").addClass("actives");
+                } 
+                else if (currentPage === "contact.html") 
+                {
+                    $("#menu-contacts").addClass("actives");
+                }
+                else if (currentPage === "planner.html") 
+                {
+                    $("#menu-planners").addClass("actives");
+                }
+            });
         }
-        $("#footer").load("footer.html")
+
+        function validate_text_field(id, error_id, massage)
+        {
+            value = $('#' + id).val().trim();
+
+            if (value == '') 
+            {
+                $('#' + error_id).html(massage);
+                $('#' + id).focus();
+                $('#' + id).css('border-color', 'red');
+                $('#btn_Submit').attr('disabled', true);
+            } 
+            else 
+            {
+                $('#' + error_id).html('');
+                $('#' + id).css('border-color', '#d2d6de');
+                $('#btn_Submit').attr('disabled', false);
+            }
+        }
+        function validate_email_field(id, error_id, message) 
+        {
+            let value = $('#' + id).val().trim();
+            let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (value === '') {
+                $('#' + error_id).html(message);
+                $('#' + id).css('border-color', 'red');
+                $('#btn_Submit').attr('disabled', true);
+            } else if (!regex.test(value)) {
+                $('#' + error_id).html('Invalid email format');
+                $('#' + id).css('border-color', 'red');
+                $('#btn_Submit').attr('disabled', true);
+            } else {
+                $('#' + error_id).html('');
+                $('#' + id).css('border-color', '#d2d6de');
+                $('#btn_Submit').attr('disabled', false);
+            }
+        }
+        function validate_phone_field(id, error_id, message) 
+        {
+            let value = $('#' + id).val().trim();
+
+            // Allow only digits, +, -, and spaces in user input
+            let cleaned = value.replace(/[^\d+\-\s]/g, '');
+            if (cleaned !== value) {
+                $('#' + id).val(cleaned);
+                value = cleaned;
+            }
+
+            // Regex:
+            // ^\+?\d{1,4}[-\s]?  → optional +country-code (1-4 digits) with optional - or space
+            // \d{10}$            → followed by exactly 10 digits
+            let regex = /^(\+?\d{1,4}[-\s]?)?\d{10}$/;
+
+            if (value === '') {
+                $('#' + error_id).html(message);
+                $('#' + id).css('border-color', 'red');
+                $('#btn_Submit').attr('disabled', true);
+            } else if (!regex.test(value)) {
+                $('#' + error_id).html('Invalid phone number format');
+                $('#' + id).css('border-color', 'red');
+                $('#btn_Submit').attr('disabled', true);
+            } else {
+                $('#' + error_id).html('');
+                $('#' + id).css('border-color', '#d2d6de');
+                $('#btn_Submit').attr('disabled', false);
+            }
+        }   
     </script>
 </body>
 </html>

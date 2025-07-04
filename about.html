@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="images/favicon/june.ico" type="image/x-icon">
 </head>
+<style>
+    .actives{
+        background-color: #000;
+        color: #fff !important;
+        padding: 5px;
+    }
+</style>
 <body>
     <div id="header"></div>
     
@@ -108,8 +115,30 @@
                     $("#menu-planner").addClass("active");
                 }
             });
+            $("#footer").load("footer.html", function() 
+            {
+                // After header is loaded, determine the current page and set active link
+                var currentPage = window.location.pathname.split("/").pop();
+
+                if (currentPage === "" || currentPage === "index.html") 
+                {
+                    $("#menu-homes").addClass("actives");
+                } 
+                else if (currentPage === "about.html") 
+                {
+                    $("#menu-abouts").addClass("actives");
+                } 
+                else if (currentPage === "contact.html") 
+                {
+                    $("#menu-contacts").addClass("actives");
+                }
+                else if (currentPage === "planner.html") 
+                {
+                    $("#menu-planners").addClass("actives");
+                }
+            });
         }
-        $("#footer").load("footer.html")
+        // $("#footer").load("footer.html")
     </script>
 </body>
 </html>
